@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.ciudad_por_defecto:  'barcelona'
 
 framework:
     #esi: ~
@@ -29,6 +30,10 @@ framework:
         handler_id: ~
     fragments: ~
     http_method_override: true
+    assets:
+            packages:
+                ofertas:
+                    base_path: '%app.ruta.fotos_ofertas%'
 
 # Twig Configuration
 twig:
