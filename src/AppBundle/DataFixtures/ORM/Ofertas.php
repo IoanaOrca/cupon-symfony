@@ -24,6 +24,8 @@ class Ofertas extends AbstractFixture implements OrderedFixtureInterface
         // Obtener todas las tiendas y ciudades de la base de datos
         $ciudades = $manager->getRepository('AppBundle:Ciudad')->findAll();
 
+
+
         foreach ($ciudades as $ciudad) {
             $tiendas = $manager->getRepository('AppBundle:Tienda')->findByCiudad(
                 $ciudad->getId()
@@ -33,7 +35,7 @@ class Ofertas extends AbstractFixture implements OrderedFixtureInterface
                 $oferta = new Oferta();
 
                 $oferta->setNombre($this->getNombre());
-                $oferta->setDescripcion($this->getDescripcion());
+                $oferta->setDescription($this->getDescripcion());
                 $oferta->setCondiciones($this->getCondiciones());
                 $oferta->setRutaFoto('foto'.mt_rand(1, 20).'.jpg');
                 $oferta->setPrecio(number_format(mt_rand(100, 10000) / 100, 2));
@@ -77,6 +79,33 @@ class Ofertas extends AbstractFixture implements OrderedFixtureInterface
             }
         }
     }
+
+//    public function load(ObjectManager $manager)
+//    {
+//        for ($i = 0; $i < 400; $i++) {
+//            $fechaPublicacion = new \DateTime();
+//            $fechaPublicacion->setTime(23, 59, 59);
+//            $entidad = new Oferta();
+//            $entidad->setNombre('Oferta '.$i);
+//            $entidad->setPrecio(rand(1, 100));
+//            $entidad->setFechaPublicacion(new \DateTime());
+//            $entidad->setDescription('LALA');
+//            $entidad->setCondiciones('LALA');
+//            $entidad->setRutaFoto('foto'.mt_rand(1, 20).'.jpg');
+//            $entidad->setDescuento($entidad->getPrecio() * (mt_rand(10, 70) / 100));
+//            $fechaExpiracion = clone $fechaPublicacion;
+//            $fechaExpiracion->add(\DateInterval::createFromDateString('24 hours'));
+//            $entidad->setFechaExpiracion($fechaExpiracion);
+//            $entidad->setCompras(0);
+//            $entidad->setUmbral(0);
+//            $entidad->setRevisada(true);
+//            $entidad->setCiudad(barcelona);
+//
+//
+//            $manager->persist($entidad);
+//        }
+//        $manager->flush();
+//    }
 
     /**
      * Generador aleatorio de nombres de ofertas.

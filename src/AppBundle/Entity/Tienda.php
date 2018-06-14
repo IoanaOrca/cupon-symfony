@@ -29,6 +29,8 @@ class Tienda
     /** @ORM\Column(type="string", length=10) */
     protected $login;
 
+    private $passwordEnClaro;
+
     /** @ORM\Column(type="string") */
     protected $password;
 
@@ -168,6 +170,23 @@ class Tienda
 
         return $this;
     }
+
+    /**
+     * @param string $password
+     */
+    public function setPasswordEnClaro($password)
+    {
+        $this->passwordEnClaro = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPasswordEnClaro()
+    {
+        return $this->passwordEnClaro;
+    }
+
 
     public function __toString()
     {
